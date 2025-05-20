@@ -1,21 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Reject Feedback Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[name="action"][value="cancel"] {
+      background-color: #dc3545;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 480px) {
+      .button-group {
+        flex-direction: column;
+      }
+
+      .button-group button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .button-group button:last-child {
+        margin-bottom: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h2>Reject Feedback Form</h2>
-  <form action="https://tamaraloni.app.n8n.cloud/webhook-test/1c44839e-7d49-4532-a581-ddb2fffe6795" method="POST">
-    <label for="country">Country/City:</label><br>
-    <input type="text" id="country" name="country" value="{{ country }}"><br><br>
+  <div class="form-container">
+    <h2>Reject Feedback Form</h2>
+    <form action="https://tamaraloni.app.n8n.cloud/webhook-test/1c44839e-7d49-4532-a581-ddb2fffe6795" method="POST">
+      <label for="country">Country/City:</label>
+      <input type="text" id="country" name="country" value="{{ country }}" required>
 
-    <label for="note">Feedback Notes:</label><br>
-    <textarea id="note" name="note" rows="4" cols="50" required></textarea><br><br>
+      <label for="note">Feedback Notes:</label>
+      <textarea id="note" name="note" rows="4" required></textarea>
 
-    <input type="hidden" name="record_id" value="{{ record_id }}">
-    
-    <button type="submit" name="action" value="submit">Submit</button>
-    <button type="submit" name="action" value="cancel">Cancel Request</button>
-  </form>
+      <input type="hidden" name="record_id" value="{{ record_id }}">
+
+      <div class="button-group">
+        <button type="submit" name="action" value="submit">Submit</button>
+        <button type="submit" name="action" value="cancel">Cancel Request</button>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
