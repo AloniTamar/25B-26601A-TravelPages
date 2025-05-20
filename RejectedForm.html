@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reject Feedback Form</title>
+</head>
+<body>
+  <h2>Reject Feedback Form</h2>
+  <form action="https://tamaraloni.app.n8n.cloud/webhook-test/1c44839e-7d49-4532-a581-ddb2fffe6795" method="POST">
+    <label for="country">Country/City:</label><br>
+    <input type="text" id="country" name="country" value="{{ country }}"><br><br>
+
+    <label for="note">Feedback Notes:</label><br>
+    <textarea id="note" name="note" rows="4" cols="50" required></textarea><br><br>
+
+    <input type="hidden" name="record_id" value="{{ record_id }}">
+    
+    <button type="submit" name="action" value="submit">Submit</button>
+    <button type="submit" name="action" value="cancel">Cancel Request</button>
+  </form>
+</body>
+</html>
