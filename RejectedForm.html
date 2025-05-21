@@ -130,12 +130,12 @@
     <h2>Reject Feedback Form</h2>
     <form action="https://tamaraloni.app.n8n.cloud/webhook-test/1c44839e-7d49-4532-a581-ddb2fffe6795" method="POST">
       <label for="country">Country/City:</label>
-      <input type="text" id="country" name="country" value="{{ country }}" required>
+      <input type="text" id="country" name="country" required>
 
       <label for="note">Feedback Notes:</label>
       <textarea id="note" name="note" required></textarea>
 
-      <input type="hidden" name="record_id" value="{{ record_id }}">
+      <input type="hidden" id="record_id" name="record_id">
 
       <div class="button-group">
         <button type="submit" name="action" value="cancel">Cancel Request</button>
@@ -143,5 +143,16 @@
       </div>
     </form>
   </div>
+
+  <script>
+    // Parse query parameters
+    const params = new URLSearchParams(window.location.search);
+    const country = params.get('country');
+    const recordId = params.get('record_id');
+
+    // Populate fields if present
+    if (country) document.getElementById('country').value = country;
+    if (recordId) document.getElementById('record_id').value = recordId;
+  </script>
 </body>
 </html>
